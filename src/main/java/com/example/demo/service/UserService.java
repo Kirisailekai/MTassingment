@@ -1,4 +1,11 @@
-package service;
+package com.example.demo.service;
+
+import com.example.demo.entities.User;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.util.DataBootstrap;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -9,6 +16,10 @@ public class UserService {
     public UserService(UserRepository userRepository, DataBootstrap dataBootstrap) {
         this.userRepository = userRepository;
         this.dataBootstrap = dataBootstrap;
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 
     public void initializeUsersFromCSV() {
@@ -22,3 +33,4 @@ public class UserService {
         }
     }
 }
+
